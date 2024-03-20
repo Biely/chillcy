@@ -1,0 +1,12 @@
+rateApi: "https://app-cdn.2q10.com/api/v2/currency"
+currencies:
+  - name: "USD"
+    sign: "$"
+  - name: "GBP"
+    sign: "£"
+  - name: "EUR"
+    sign: "€"
+  - name: "HKD"
+    sign: "HK$"
+  - name: "JPY"
+    sign: "¥"
