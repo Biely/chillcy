@@ -40,7 +40,7 @@ func GetRateToCNY(url string, currencyName string) (cnyRate float64, err error) 
 	}
 	rateToCNY := rateData.Rates["CNY"]
 	rateToInputCurr := rateData.Rates[currencyName]
-	cnyRate = 1 / rateToInputCurr * rateToCNY
+	cnyRate = float64(1) / rateToInputCurr * rateToCNY
 	// fmt.Println(cnyRate)
 	return
 }
