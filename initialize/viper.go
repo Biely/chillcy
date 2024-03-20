@@ -3,7 +3,7 @@ package initialize
 import (
 	"fmt"
 
-	"chillcy.com/rate-converter/global"
+	"github.com/Biely/chillcy/global"
 	"github.com/fsnotify/fsnotify"
 	"github.com/spf13/viper"
 )

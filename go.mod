@@ -1,4 +1,4 @@
-module chillcy.com/rate-converter
+module github.com/Biely/chillcy
 
 go 1.19
 

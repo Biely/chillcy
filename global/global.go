@@ -1,6 +1,6 @@
 package global
 
-import "chillcy.com/rate-converter/config"
+import "github.com/Biely/chillcy/config"
 
 //定义配置文件的全局变量
 //@author: [Gaayean]

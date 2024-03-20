@@ -19,17 +19,25 @@ func MatchCurrencyAndPrice(inputPrice string) (sign string, price float64, err e
 		return
 	}
 	noDotPrice := strings.ReplaceAll(inputPrice, ",", "") //去除字符串中的千位逗号
-	priceRegex := `\d+(.\d+)?`
+	priceRegex := `\d+(\.\d+)?`
 	rePrice, err := regexp.Compile(priceRegex)
 	if err != nil {
 		return
 	}
-	reSign, err := regexp.Compile(fmt.Sprintf("[^%v]+", priceRegex))
+	reSign, err := regexp.Compile(fmt.Sprintf("^[^%v]+", priceRegex)) //这里是匹配除了价格之外的字符串,可能不够严谨，可以选择改为（\$|£|€|HK$）这样的写法，不过会越来越长
 	if err != nil {
 		return
 	}
 	sign = reSign.FindString(noDotPrice)
+	if sign == "" {
+		err = fmt.Errorf("未知货币类型")
+		return
+	}
 	priceStr := rePrice.FindString(noDotPrice)
+	if priceStr == "" {
+		err = fmt.Errorf("未知货币价格")
+		return
+	}
 	price, err = strconv.ParseFloat(priceStr, 64)
 	return
 }

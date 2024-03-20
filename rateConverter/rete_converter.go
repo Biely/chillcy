@@ -3,9 +3,9 @@ package rateconverter
 import (
 	"fmt"
 
-	"chillcy.com/rate-converter/global"
-	"chillcy.com/rate-converter/rateConverter/strategy"
-	"chillcy.com/rate-converter/utils"
+	"github.com/Biely/chillcy/global"
+	"github.com/Biely/chillcy/rateConverter/strategy"
+	"github.com/Biely/chillcy/utils"
 )
 
 type RateConverter struct {

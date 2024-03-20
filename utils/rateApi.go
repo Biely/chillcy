@@ -3,7 +3,7 @@ package utils
 import (
 	"encoding/json"
 	"fmt"
-	"io/ioutil"
+	"io"
 	"net/http"
 )
 
@@ -27,7 +27,7 @@ func GetRateToCNY(url string, currencyName string) (cnyRate float64, err error) 
 	}
 	defer resRateData.Body.Close()
 	// 读取响应体
-	body, err := ioutil.ReadAll(resRateData.Body)
+	body, err := io.ReadAll(resRateData.Body)
 	if err != nil {
 		err = fmt.Errorf("读取响应体失败: %v", err)
 		return
@@ -35,12 +35,12 @@ func GetRateToCNY(url string, currencyName string) (cnyRate float64, err error) 
 	var rateData RateData
 	err = json.Unmarshal(body, &rateData)
 	if err != nil {
-		fmt.Println("解析 JSON 失败:", err)
+		err = fmt.Errorf("解析 JSON 失败: %v", err)
 		return
 	}
 	rateToCNY := rateData.Rates["CNY"]
 	rateToInputCurr := rateData.Rates[currencyName]
 	cnyRate = 1 / rateToInputCurr * rateToCNY
-	fmt.Println(cnyRate)
+	// fmt.Println(cnyRate)
 	return
 }

@@ -5,8 +5,8 @@ import (
 	"math"
 	"strconv"
 
-	"chillcy.com/rate-converter/global"
-	"chillcy.com/rate-converter/utils"
+	"github.com/Biely/chillcy/global"
+	"github.com/Biely/chillcy/utils"
 )
 
 // @author: [Gaayean]
